@@ -1,6 +1,9 @@
 import { useI18n } from "@/lib/i18n";
 
-export const WHATSAPP_URL = "https://wa.me/244900000000";
+const WHATSAPP_NUMBER = "244955758961";
+const WHATSAPP_MESSAGE = "Olá! Gostaria de falar sobre uma solução digital para o meu negócio.";
+
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 function WhatsAppIcon({ className = "size-5" }: { className?: string }) {
   return (
