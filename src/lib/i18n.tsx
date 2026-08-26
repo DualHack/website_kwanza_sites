@@ -15,7 +15,7 @@ export const dict = {
     },
     hero: {
       badge: "ANGOLA · SOFTWARE HOUSE",
-      title: "Software House em Angola para transformar negócios.",
+      title: "Transformando desafios de negócio em soluções digitais",
       text: "Desenvolvemos software, automações e soluções digitais personalizadas para transformar processos complexos em experiências simples, eficientes e escaláveis.",
       primary: "Construir uma solução",
       secondary: "Falar connosco",
@@ -163,7 +163,7 @@ export const dict = {
     },
     hero: {
       badge: "ANGOLA · SOFTWARE HOUSE",
-      title: "Software House in Angola for transforming businesses.",
+      title: "Transforming business challenges into digital solutions.",
       text: "We build custom software, automations and digital solutions that turn complex processes into simple, efficient and scalable experiences.",
       primary: "Build a solution",
       secondary: "Talk to us",
