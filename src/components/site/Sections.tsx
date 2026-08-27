@@ -2,13 +2,18 @@ import {
   ArrowUpRight,
   Boxes,
   BriefcaseBusiness,
+  Braces,
   Building2,
   CheckCircle2,
   ChevronDown,
+  Cloud,
   Code2,
   Compass,
+  Container,
+  Database,
   Fingerprint,
   Gauge,
+  GitBranch,
   Handshake,
   Layers,
   LineChart,
@@ -51,6 +56,45 @@ function SectionTitle({ children }: { children: string }) {
     <h2 className="text-gradient max-w-3xl text-balance text-xl leading-[1.1] font-extrabold sm:text-2xl lg:text-2xl">
       {children}
     </h2>
+  );
+}
+
+const heroTechnologies = [
+  { name: "JavaScript", mark: "JS", icon: Braces },
+  { name: "TypeScript", mark: "TS", icon: Code2 },
+  { name: "MongoDB", mark: "MDB", icon: Database },
+  { name: "AWS", mark: "AWS", icon: Cloud },
+  { name: "Docker", mark: "DO", icon: Container },
+  { name: "PostgreSQL", mark: "SQL", icon: Database },
+  { name: "Next.js", mark: "N", icon: Layers },
+  { name: "Git", mark: "GIT", icon: GitBranch },
+];
+
+function TechnologyMarquee() {
+  return (
+    <div className="absolute inset-x-0 bottom-0 z-10 overflow-hidden border-t border-brand/15 bg-[color-mix(in_oklab,var(--background)_92%,var(--brand))] py-4 shadow-[0_-18px_45px_color-mix(in_oklab,var(--background)_55%,transparent)]">
+      <div className="flex w-max animate-tech-marquee motion-reduce:animate-none">
+        {[0, 1].map((group) => (
+          <div
+            key={group}
+            aria-hidden={group === 1}
+            className="flex items-center gap-10 px-5 sm:gap-16 sm:px-8"
+          >
+            {heroTechnologies.map(({ name, mark, icon: Icon }) => (
+              <div key={name} className="flex shrink-0 items-center gap-2.5 text-muted-foreground/75">
+                <span className="flex size-8 items-center justify-center rounded-md border border-brand/20 bg-brand/8 text-[0.58rem] font-bold tracking-tight text-brand-soft">
+                  {mark}
+                </span>
+                <Icon className="size-4 text-brand/70" strokeWidth={1.8} />
+                <span className="text-[0.68rem] font-semibold tracking-[0.18em] uppercase">
+                  {name}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -202,6 +246,8 @@ export function Hero() {
         </Reveal>
         
       </div>
+
+      <TechnologyMarquee />
     </section>
   );
 }
