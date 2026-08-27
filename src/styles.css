@@ -294,29 +294,6 @@
   }
 }
 
-@utility underline-animate-hover {
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--brand);
-    transition: width 0.6s ease-out;
-  }
-  &:hover::after {
-    width: 100%;
-  }
-}
-
-@media (max-width: 639px) {
-  .underline-animate-hover::after {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

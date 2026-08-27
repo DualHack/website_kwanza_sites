@@ -1,6 +1,7 @@
 import {
   ArrowUpRight,
   Boxes,
+  BriefcaseBusiness,
   Building2,
   CheckCircle2,
   ChevronDown,
@@ -11,6 +12,11 @@ import {
   Handshake,
   Layers,
   LineChart,
+  Linkedin,
+  Instagram,
+  Facebook,
+  FileText,
+  MessageCircle,
   Network,
   PenTool,
   Repeat,
@@ -24,11 +30,12 @@ import {
   Users,
   Workflow,
   Zap,
-  Palette
+  Palette,
 } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { useI18n } from "@/lib/i18n";
 import { useState, type ComponentType } from "react";
+import { WHATSAPP_URL } from "./WhatsAppButton";
 
 function Eyebrow({ children }: { children: string }) {
   return (
@@ -150,26 +157,19 @@ export function Hero() {
             {/* Left Button */}
             <a
               href="#contacto"
-              className="group inline-flex w-full max-w-[280px] items-center justify-center gap-2 rounded-lg border border-brand/60 bg-brand/10 px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:bg-brand/20 hover:text-brand underline-animate-hover sm:w-auto sm:max-w-none sm:justify-start sm:rounded-none sm:border-0 sm:bg-transparent sm:px-6 sm:py-3"
+              className="group inline-flex w-full max-w-[280px] items-center justify-center gap-2 rounded-lg border border-brand/60 bg-brand/10 px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:bg-brand/20 hover:text-brand sm:w-auto sm:max-w-none sm:px-6 sm:py-3"
             >
+              <BriefcaseBusiness className="size-4 text-brand" />
               <span>{t.hero.primary}</span>
-              <ArrowUpRight className="size-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
-
-            {/* Arrow Divider */}
-            <div className="hidden sm:flex items-center gap-3 text-muted-foreground">
-              <span className="h-px w-8 bg-gradient-to-r from-muted-foreground to-transparent" />
-              <ArrowUpRight className="size-4 rotate-90" />
-              <span className="h-px w-8 bg-gradient-to-l from-muted-foreground to-transparent" />
-            </div>
 
             {/* Right Button */}
              <a
               href="#contacto"
-              className="group inline-flex w-full max-w-[280px] items-center justify-center gap-2 rounded-lg border border-border bg-surface/50 px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand/60 hover:bg-surface hover:text-brand underline-animate-hover sm:w-auto sm:max-w-none sm:justify-start sm:rounded-none sm:border-0 sm:bg-transparent sm:px-6 sm:py-3"
+              className="group inline-flex w-full max-w-[280px] items-center justify-center gap-2 rounded-lg border border-border bg-surface/50 px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand/60 hover:bg-surface hover:text-brand sm:w-auto sm:max-w-none sm:px-6 sm:py-3"
             >
+              <MessageCircle className="size-4 text-brand" />
               <span>{t.hero.secondary}</span>
-              <ArrowUpRight className="size-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
           </div>
         </Reveal>
@@ -495,15 +495,16 @@ export function CtaBand() {
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:text-brand underline-animate-hover"
+              className="group inline-flex items-center gap-2 rounded-lg border border-brand/60 bg-brand/10 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:bg-brand/20 hover:text-brand"
             >
+              <MessageCircle className="size-4 text-brand" />
               {t.cta.primary}
-              <ArrowUpRight className="size-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:text-brand underline-animate-hover"
+              className="group inline-flex items-center gap-2 rounded-lg border border-border bg-surface/50 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand/60 hover:bg-surface hover:text-brand"
             >
+              <FileText className="size-4 text-brand" />
               {t.cta.secondary}
             </a>
           </div>
@@ -532,6 +533,31 @@ export function Contact() {
             <Reveal delay={80}>
               <div className="mt-5">
                 <SectionTitle>{t.contact.title}</SectionTitle>
+              </div>
+            </Reveal>
+            <Reveal delay={140}>
+              <div className="mt-8 flex items-center gap-3">
+                {[
+                  { label: "Instagram", icon: Instagram, url: "https://instagram.com" },
+                  { label: "Facebook", icon: Facebook, url: "https://facebook.com" },
+                  {
+                    label: "LinkedIn",
+                    icon: Linkedin,
+                    url: "https://www.linkedin.com/company/kwanzasites/",
+                  },
+                  { label: "WhatsApp", icon: MessageCircle, url: WHATSAPP_URL },
+                ].map(({ label, icon: Icon, url }) => (
+                  <a
+                    key={label}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-surface/50 text-muted-foreground transition-colors duration-300 hover:border-brand/60 hover:bg-surface hover:text-brand"
+                  >
+                    <Icon className="size-4" />
+                  </a>
+                ))}
               </div>
             </Reveal>
           </div>
@@ -594,10 +620,9 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="group mt-6 inline-flex w-full items-center gap-2 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:text-brand underline-animate-hover sm:w-auto"
+                  className="group mt-6 inline-flex w-full items-center gap-2 rounded-lg border border-brand/60 bg-brand/10 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:bg-brand/20 hover:text-brand sm:w-auto"
               >
                 {t.contact.submit}
-                <ArrowUpRight className="size-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>
 
               {sent ? (
