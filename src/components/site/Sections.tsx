@@ -17,6 +17,7 @@ import {
   Handshake,
   Layers,
   LineChart,
+  LoaderCircle,
   Linkedin,
   Instagram,
   Facebook,
@@ -41,6 +42,7 @@ import { Reveal } from "./Reveal";
 import { useI18n } from "@/lib/i18n";
 import { useState, type ComponentType, type CSSProperties } from "react";
 import { WHATSAPP_URL } from "./WhatsAppButton";
+import { sendContactEmail } from "@/lib/contact";
 
 function Eyebrow({ children }: { children: string }) {
   return (
@@ -598,8 +600,8 @@ const fieldClass =
   "w-full rounded-xl border border-border bg-surface/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 outline-none transition-all duration-300 focus:border-brand/60 focus:bg-surface focus:ring-2 focus:ring-brand/20";
 
 export function Contact() {
-  const { t } = useI18n();
-  const [sent, setSent] = useState(false);
+  const { t, lang } = useI18n();
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   return (
     <section id="contacto" className="relative border-t border-border py-24 lg:py-32">
@@ -643,9 +645,29 @@ export function Contact() {
 
           <Reveal delay={120}>
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setSent(true);
+                const formElement = e.currentTarget;
+                setSubmitStatus("sending");
+
+                const form = new FormData(formElement);
+                try {
+                  await sendContactEmail({
+                    data: {
+                      name: String(form.get("name") ?? ""),
+                      company: String(form.get("company") ?? ""),
+                      email: String(form.get("email") ?? ""),
+                      phone: String(form.get("phone") ?? ""),
+                      type: String(form.get("type") ?? ""),
+                      message: String(form.get("message") ?? ""),
+                      lang,
+                    },
+                  });
+                  formElement.reset();
+                  setSubmitStatus("success");
+                } catch {
+                  setSubmitStatus("error");
+                }
               }}
               className="rounded-3xl border border-border bg-surface/40 p-6 sm:p-8"
             >
@@ -699,16 +721,21 @@ export function Contact() {
 
               <button
                 type="submit"
+                disabled={submitStatus === "sending"}
                 className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-brand/60 bg-brand/10 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:bg-brand/20 hover:text-brand sm:w-auto"
               >
-                {t.contact.submit}
+                {submitStatus === "sending" ? <LoaderCircle className="size-4 animate-spin" /> : null}
+                {submitStatus === "sending" ? t.contact.sending : t.contact.submit}
               </button>
 
-              {sent ? (
+              {submitStatus === "success" ? (
                 <p className="mt-4 flex items-center gap-2 text-sm text-brand-soft">
                   <CheckCircle2 className="size-4" />
                   {t.contact.sent}
                 </p>
+              ) : null}
+              {submitStatus === "error" ? (
+                <p className="mt-4 text-sm text-destructive">{t.contact.error}</p>
               ) : null}
             </form>
           </Reveal>
