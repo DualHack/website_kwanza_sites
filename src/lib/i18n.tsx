@@ -68,7 +68,7 @@ export const dict = {
       eyebrow: "Software House",
       title: "Mais do que desenvolvimento. Somos o seu parceiro tecnológico.",
       text: "Da ideia à produção, acompanhamos todo o ciclo de vida da solução.",
-      steps: ["Discovery", "Design", "Development", "QA", "Deployment", "Evolution"],
+      steps: ["Descoberta", "Design", "Desenvolvimento", "QA", "Implementação", "Evolução"],
     },
     process: {
       eyebrow: "Como trabalhamos",

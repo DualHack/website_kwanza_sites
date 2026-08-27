@@ -267,6 +267,23 @@
   }
 }
 
+@keyframes bit-fall {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(12px, 112vh, 0);
+    opacity: 0;
+  }
+}
+
 @utility animate-float-slow {
   animation: float-slow 7s ease-in-out infinite;
 }
@@ -291,6 +308,20 @@
 
 @utility animate-tech-marquee {
   animation: tech-marquee 32s linear infinite;
+}
+
+.tech-bit {
+  position: absolute;
+  top: var(--bit-top);
+  left: var(--bit-left);
+  will-change: transform, opacity;
+  color: color-mix(in oklab, var(--brand) 72%, transparent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 0 12px color-mix(in oklab, var(--brand) 65%, transparent);
+  animation: bit-fall var(--bit-duration) linear var(--bit-delay) infinite;
 }
 
 @utility underline-animate {

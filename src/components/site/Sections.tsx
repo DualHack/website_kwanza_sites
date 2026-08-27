@@ -39,7 +39,7 @@ import {
 } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { useI18n } from "@/lib/i18n";
-import { useState, type ComponentType } from "react";
+import { useState, type ComponentType, type CSSProperties } from "react";
 import { WHATSAPP_URL } from "./WhatsAppButton";
 
 function Eyebrow({ children }: { children: string }) {
@@ -69,6 +69,37 @@ const heroTechnologies = [
   { name: "Next.js", icon: Layers },
   { name: "Git", icon: GitBranch },
 ];
+
+const heroBits = Array.from({ length: 48 }, (_, index) => ({
+  bit: index % 2 === 0 ? "0" : "1",
+  left: (index * 37) % 101,
+  top: 6 + ((index * 23) % 82),
+  delay: (index * 1.35) % 14,
+  duration: 9 + (index % 5) * 2,
+}));
+
+function TechBitRain() {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-60" aria-hidden="true">
+      {heroBits.map(({ bit, left, top, delay, duration }, index) => (
+        <span
+          key={`${bit}-${index}`}
+          className="tech-bit"
+          style={
+            {
+              "--bit-left": `${left}%`,
+              "--bit-top": `${top}%`,
+              "--bit-delay": `${delay}s`,
+              "--bit-duration": `${duration}s`,
+            } as CSSProperties
+          }
+        >
+          {bit}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 function TechnologyMarquee() {
   return (
@@ -117,6 +148,8 @@ export function Hero() {
           [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]
         "
       />
+
+      <TechBitRain />
 
       {/* Main glow */}
       <div
@@ -360,11 +393,11 @@ export function SoftwareHouse() {
 
         <div className="relative mt-16">
           <div className="absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-brand/40 to-transparent lg:block" />
-          <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
+          <ol className="grid grid-cols-2 gap-6 lg:grid-cols-6">
             {t.house.steps.map((step, i) => {
               const Icon = icons[i];
               return (
-                <Reveal as="li" key={step} delay={(i + 1) * 300} className="relative">
+                <Reveal as="li" key={step} delay={(i + 1) * 300} className="relative text-center">
                   <span className="relative z-10 inline-flex size-12 items-center justify-center rounded-2xl border border-brand/25 bg-background text-brand shadow-[0_0_0_6px_var(--background)]">
                     <Icon className="size-5" />
                   </span>
