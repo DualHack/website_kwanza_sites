@@ -71,7 +71,7 @@ const heroTechnologies = [
 ];
 
 const heroBits = Array.from({ length: 48 }, (_, index) => ({
-  bit: index % 2 === 0 ? "0" : "1",
+  bit: index % 4 === 0 ? "0" : "1",
   left: (index * 37) % 101,
   top: 6 + ((index * 23) % 82),
   delay: (index * 1.35) % 14,
@@ -699,7 +699,7 @@ export function Contact() {
 
               <button
                 type="submit"
-                  className="group mt-6 inline-flex w-full items-center gap-2 rounded-lg border border-brand/60 bg-brand/10 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:bg-brand/20 hover:text-brand sm:w-auto"
+                className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-brand/60 bg-brand/10 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:bg-brand/20 hover:text-brand sm:w-auto"
               >
                 {t.contact.submit}
               </button>
