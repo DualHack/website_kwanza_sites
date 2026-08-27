@@ -60,19 +60,19 @@ function SectionTitle({ children }: { children: string }) {
 }
 
 const heroTechnologies = [
-  { name: "JavaScript", mark: "JS", icon: Braces },
-  { name: "TypeScript", mark: "TS", icon: Code2 },
-  { name: "MongoDB", mark: "MDB", icon: Database },
-  { name: "AWS", mark: "AWS", icon: Cloud },
-  { name: "Docker", mark: "DO", icon: Container },
-  { name: "PostgreSQL", mark: "SQL", icon: Database },
-  { name: "Next.js", mark: "N", icon: Layers },
-  { name: "Git", mark: "GIT", icon: GitBranch },
+  { name: "JavaScript", icon: Braces },
+  { name: "TypeScript", icon: Code2 },
+  { name: "MongoDB", icon: Database },
+  { name: "AWS", icon: Cloud },
+  { name: "Docker", icon: Container },
+  { name: "PostgreSQL", icon: Database },
+  { name: "Next.js", icon: Layers },
+  { name: "Git", icon: GitBranch },
 ];
 
 function TechnologyMarquee() {
   return (
-    <div className="absolute inset-x-0 bottom-0 z-10 overflow-hidden border-t border-brand/15 bg-[color-mix(in_oklab,var(--background)_92%,var(--brand))] py-4 shadow-[0_-18px_45px_color-mix(in_oklab,var(--background)_55%,transparent)]">
+    <div className="absolute inset-x-0 bottom-0 z-10 overflow-hidden border-t border-brand/15 bg-[color-mix(in_oklab,var(--background)_92%,var(--brand))] py-6 shadow-[0_-18px_45px_color-mix(in_oklab,var(--background)_55%,transparent)]">
       <div className="flex w-max animate-tech-marquee motion-reduce:animate-none">
         {[0, 1].map((group) => (
           <div
@@ -80,13 +80,13 @@ function TechnologyMarquee() {
             aria-hidden={group === 1}
             className="flex items-center gap-10 px-5 sm:gap-16 sm:px-8"
           >
-            {heroTechnologies.map(({ name, mark, icon: Icon }) => (
-              <div key={name} className="flex shrink-0 items-center gap-2.5 text-muted-foreground/75">
-                <span className="flex size-8 items-center justify-center rounded-md border border-brand/20 bg-brand/8 text-[0.58rem] font-bold tracking-tight text-brand-soft">
-                  {mark}
-                </span>
-                <Icon className="size-4 text-brand/70" strokeWidth={1.8} />
-                <span className="text-[0.68rem] font-semibold tracking-[0.18em] uppercase">
+            {heroTechnologies.map(({ name, icon: Icon }) => (
+              <div
+                key={name}
+                className="group flex shrink-0 items-center gap-3 text-muted-foreground/75 transition-transform duration-300 hover:scale-110 hover:text-brand"
+              >
+                <Icon className="size-5 text-brand/70 transition-colors duration-300 group-hover:text-brand sm:size-6" strokeWidth={1.8} />
+                <span className="text-sm font-semibold tracking-[0.16em] uppercase sm:text-base">
                   {name}
                 </span>
               </div>
@@ -364,7 +364,7 @@ export function SoftwareHouse() {
             {t.house.steps.map((step, i) => {
               const Icon = icons[i];
               return (
-                <Reveal as="li" key={step} delay={i * 80} className="relative">
+                <Reveal as="li" key={step} delay={(i + 1) * 300} className="relative">
                   <span className="relative z-10 inline-flex size-12 items-center justify-center rounded-2xl border border-brand/25 bg-background text-brand shadow-[0_0_0_6px_var(--background)]">
                     <Icon className="size-5" />
                   </span>
