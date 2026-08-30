@@ -44,7 +44,7 @@ const createClientEmail = (name: string, copy: EmailCopy, lang: Lang) => {
 };
 
 const createAdminEmail = (data: z.infer<typeof contactSchema>, copy: EmailCopy, lang: Lang) => {
-  const assetUrl = (process.env.SITE_URL).replace(/\/$/, "");
+  const assetUrl = process.env.SITE_URL.replace(/\/$/, "");
   const row = (label: string, value: string) =>
     `<tr><td style="padding:13px 0;border-bottom:1px solid #1d3856;font-weight:700;color:#e8f0fb;width:38%;">${escapeHtml(label)}</td><td style="padding:13px 0;border-bottom:1px solid #1d3856;color:#b7c7d9;">${escapeHtml(value)}</td></tr>`;
   return emailLayout(

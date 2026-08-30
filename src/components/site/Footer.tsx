@@ -7,7 +7,11 @@ export function Footer() {
   const { t } = useI18n();
 
   const columns = [
-    { title: t.footer.company, links: t.footer.companyLinks, hrefs: ["#solucoes", "#processo", "#contacto"] },
+    {
+      title: t.footer.company,
+      links: t.footer.companyLinks,
+      hrefs: ["#solucoes", "#processo", "#contacto"],
+    },
     {
       title: t.footer.services,
       links: t.footer.serviceLinks,
@@ -18,7 +22,7 @@ export function Footer() {
   const socialLinks = [
     { icon: Instagram, url: "https://instagram.com" },
     { icon: Facebook, url: "https://facebook.com" },
-    { icon: Linkedin, url: "https://linkedin.com" },
+    { icon: Linkedin, url: "https://www.linkedin.com/company/kwanzasites/" },
     { icon: MessageCircle, url: WHATSAPP_URL },
   ];
 

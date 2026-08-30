@@ -6,6 +6,7 @@ import {
   Contact,
   CtaBand,
   Hero,
+  Partners,
   Problems,
   Process,
   Services,
@@ -25,7 +26,11 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: `${siteName} | Software House em Angola` },
       { name: "description", content: siteDescription },
-      { name: "keywords", content: "software house em Angola, desenvolvimento de software em Angola, automação de processos, soluções tecnológicas Angola" },
+      {
+        name: "keywords",
+        content:
+          "software house em Angola, desenvolvimento de software em Angola, automação de processos, soluções tecnológicas Angola",
+      },
       { property: "og:site_name", content: siteName },
       { property: "og:title", content: `${siteName} | Tecnologia que transforma negócios` },
       { property: "og:description", content: siteDescription },
@@ -75,6 +80,7 @@ function Index() {
           <Process />
           <Why />
           <Audience />
+          <Partners />
           <CtaBand />
           <Contact />
         </main>

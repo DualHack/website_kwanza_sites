@@ -82,7 +82,10 @@ const heroBits = Array.from({ length: 48 }, (_, index) => ({
 
 function TechBitRain() {
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-60" aria-hidden="true">
+    <div
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-60"
+      aria-hidden="true"
+    >
       {heroBits.map(({ bit, left, top, delay, duration }, index) => (
         <span
           key={`${bit}-${index}`}
@@ -118,7 +121,10 @@ function TechnologyMarquee() {
                 key={name}
                 className="group flex shrink-0 items-center gap-3 text-muted-foreground/75 transition-transform duration-300 hover:scale-110 hover:text-brand"
               >
-                <Icon className="size-5 text-brand/70 transition-colors duration-300 group-hover:text-brand sm:size-6" strokeWidth={1.8} />
+                <Icon
+                  className="size-5 text-brand/70 transition-colors duration-300 group-hover:text-brand sm:size-6"
+                  strokeWidth={1.8}
+                />
                 <span className="text-sm font-semibold tracking-[0.16em] uppercase sm:text-base">
                   {name}
                 </span>
@@ -220,7 +226,8 @@ export function Hero() {
               text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.1]
             "
             style={{
-              background: "linear-gradient(180deg, var(--foreground) 30%, color-mix(in oklab, var(--foreground) 55%, transparent))",
+              background:
+                "linear-gradient(180deg, var(--foreground) 30%, color-mix(in oklab, var(--foreground) 55%, transparent))",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
               color: "transparent",
@@ -243,7 +250,7 @@ export function Hero() {
             </a>
 
             {/* Right Button */}
-             <a
+            <a
               href="#contacto"
               className="group inline-flex w-full max-w-[280px] items-center justify-center gap-2 rounded-lg border border-border bg-surface/50 px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand/60 hover:bg-surface hover:text-brand sm:w-auto sm:max-w-none sm:px-6 sm:py-3"
             >
@@ -279,15 +286,12 @@ export function Hero() {
             <span className="h-px w-10 bg-gradient-to-l from-transparent to-brand/50" />
           </div>
         </Reveal>
-        
       </div>
 
       <TechnologyMarquee />
     </section>
   );
 }
-
-
 
 /* ---------------- Problems ---------------- */
 export function Problems() {
@@ -350,9 +354,7 @@ export function Services() {
                     </span>
                     <div>
                       <h3 className="text-lg font-bold text-foreground">{item.t}</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                        {item.d}
-                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.d}</p>
                     </div>
                   </div>
                   <span className="relative mt-7 inline-flex items-center gap-1.5 text-xs font-semibold tracking-wide text-brand opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -447,7 +449,6 @@ export function Process() {
       />
 
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-
         {/* Header */}
         <Reveal>
           <Eyebrow>{t.process.eyebrow}</Eyebrow>
@@ -601,7 +602,9 @@ const fieldClass =
 
 export function Contact() {
   const { t, lang } = useI18n();
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">(
+    "idle",
+  );
 
   return (
     <section id="contacto" className="relative border-t border-border py-24 lg:py-32">
@@ -724,7 +727,9 @@ export function Contact() {
                 disabled={submitStatus === "sending"}
                 className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-brand/60 bg-brand/10 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:bg-brand/20 hover:text-brand sm:w-auto"
               >
-                {submitStatus === "sending" ? <LoaderCircle className="size-4 animate-spin" /> : null}
+                {submitStatus === "sending" ? (
+                  <LoaderCircle className="size-4 animate-spin" />
+                ) : null}
                 {submitStatus === "sending" ? t.contact.sending : t.contact.submit}
               </button>
 
@@ -739,6 +744,64 @@ export function Contact() {
               ) : null}
             </form>
           </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Partners ---------------- */
+export function Partners() {
+  const { t } = useI18n();
+
+  const partnerLogos: Record<string, string> = {
+    SEFIA: "/sefia.png",
+    YetuStore: "/yetustore.png",
+  };
+
+  return (
+    <section id="parceiros" className="relative border-t border-border py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <Reveal>
+          <Eyebrow>{t.partners.eyebrow}</Eyebrow>
+        </Reveal>
+        <Reveal delay={80}>
+          <div className="mt-5">
+            <SectionTitle>{t.partners.description}</SectionTitle>
+          </div>
+        </Reveal>
+
+        <div className="mt-14 grid gap-12 sm:grid-cols-2 lg:gap-16">
+          {t.partners.items.map((partner, i) => (
+            <Reveal key={partner.name} delay={i * 100}>
+              <a
+                href={partner.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center text-center transition-opacity duration-300 hover:opacity-80"
+              >
+                {/* Logo */}
+                <div className="mb-6 flex h-24 w-full items-center justify-center">
+                  <img
+                    src={partnerLogos[partner.name]}
+                    alt={partner.name}
+                    className="max-h-24 w-auto object-contain"
+                  />
+                </div>
+
+                {/* Partner Name */}
+                <h3 className="text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-brand">
+                  {partner.name}
+                </h3>
+
+                {/* Visit Website Link */}
+                <span className="group/link mt-3 inline-flex items-center gap-2 text-xs font-semibold tracking-wide text-brand uppercase transition-colors duration-300 group-hover:text-brand-soft">
+                  {t.partners.visitWebsite}
+                  <ArrowUpRight className="size-3 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                </span>
+              </a>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

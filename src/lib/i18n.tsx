@@ -9,6 +9,7 @@ export const dict = {
       services: "Serviços",
       how: "Como Trabalhamos",
       solutions: "Soluções",
+      partners: "Parceiros",
       contact: "Contacto",
       cta: "Falar com a KwanzaSites",
       menu: "Menu",
@@ -109,6 +110,22 @@ export const dict = {
         "Empreendedores",
       ],
     },
+    partners: {
+      eyebrow: "Parceiros",
+      title: "Parceiros",
+      description: "Construímos relações com startups e negócios.",
+      visitWebsite: "Visitar website",
+      items: [
+        {
+          name: "SEFIA",
+          website: "https://www.sefia.ao/",
+        },
+        {
+          name: "YetuStore",
+          website: "https://www.yetustore.shop/",
+        },
+      ],
+    },
     cta: {
       title: "Tem um problema que pode ser resolvido com tecnologia?",
       text: "Vamos transformar a sua ideia, processo ou desafio numa solução digital.",
@@ -187,6 +204,7 @@ export const dict = {
       services: "Services",
       how: "How We Work",
       solutions: "Solutions",
+      partners: "Partners",
       contact: "Contact",
       cta: "Talk to KwanzaSites",
       menu: "Menu",
@@ -276,6 +294,22 @@ export const dict = {
         "Retail & commerce",
         "Institutions",
         "Entrepreneurs",
+      ],
+    },
+    partners: {
+      eyebrow: "Partners",
+      title: "Partners",
+      description: "We build relationships with startups and businesses.",
+      visitWebsite: "Visit website",
+      items: [
+        {
+          name: "SEFIA",
+          website: "https://www.sefia.ao/",
+        },
+        {
+          name: "YetuStore",
+          website: "https://www.yetustore.shop/",
+        },
       ],
     },
     cta: {

@@ -51,6 +51,7 @@ export function Navbar() {
     { href: "#servicos", label: t.nav.services },
     { href: "#processo", label: t.nav.how },
     { href: "#solucoes", label: t.nav.solutions },
+    { href: "#parceiros", label: t.nav.partners },
     { href: "#contacto", label: t.nav.contact },
   ];
 
